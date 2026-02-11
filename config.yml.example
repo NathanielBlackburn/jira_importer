@@ -1,0 +1,36 @@
+# Copy to config.yml and adjust. Credentials (JIRA_EMAIL, JIRA_PASSWORD) go in .env.
+
+jira:
+  base_url: https://your-jira-server.example.com
+
+csv:
+  delimiter: ","
+  encoding: UTF-8
+  # source_url: "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit"   # Optional default; lets you run "import" with no argument
+  # skip_ssl_verify: true   # Only for URL fetches (e.g. Google Sheets). Use if you get SSL/CRL errors behind VPN. Insecure.
+
+mapping:
+  issue_key: "Issue Key"
+  date: "Date"
+  time_spent: "Time Spent"
+  comment: "Comment"
+
+time:
+  date_format: "%Y-%m-%d"
+  # time_spent_format: "minutes" | "hours" | "excel_duration" (hh:mm:ss → timeSpentSeconds) | "jira" (passed as timeSpent, e.g. "1h 30m")
+  time_spent_format: "minutes"
+  # timezone: IANA TZ identifier for formatting "started" sent to Jira (default: Europe/Warsaw)
+  timezone: "Europe/Warsaw"
+
+validation:
+  enabled: true
+  allow_future_dates: false
+
+# Deduplication: mudd tags worklogs in Jira with [mudd-import-id:&lt;hash&gt;] and skips if already present
+deduplication:
+  enabled: false
+
+rate_limit:
+  requests_per_second: 10
+  max_retries: 3
+  backoff_base: 2

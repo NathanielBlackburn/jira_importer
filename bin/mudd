@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+
+# Load .env from project root (same as Bundler.root) so ENV is set before any command runs
+require "dotenv"
+env_path = File.expand_path(".env", Bundler.root)
+Dotenv.load(env_path) if File.exist?(env_path)
+
+$LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
+require "jira_worklog_import"
+
+JiraWorklogImport::Cli::Main.start(ARGV)

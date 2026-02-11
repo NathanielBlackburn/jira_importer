@@ -1,0 +1,21 @@
+/.bundle/
+/.rbenv/
+*.gem
+*.rbc
+/.config
+/coverage/
+# Gemfile.lock is committed for reproducible installs
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/tmp/
+*.log
+.env
+config.yml
+.jira_worklog_hashes.json
+.jira_worklog_rollback.json
+*.swp
+*.swo
+*~
+.DS_Store
